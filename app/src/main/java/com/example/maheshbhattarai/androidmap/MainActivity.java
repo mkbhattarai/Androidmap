@@ -26,7 +26,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-// my first comment
+
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
         com.google.android.gms.location.LocationListener
@@ -35,8 +35,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     GoogleMap mMap;
     LatLng latLng;
     MarkerOptions marker;
-    public Double currentLatitute;
-    public Double currentLongtitute;
+    public Double currentLatitude;
+    public Double currentLongitude;
     public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
     GoogleApiClient mGoogleApiClient;
     Location mLastLocation;
@@ -50,18 +50,18 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         //this is for version permission
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             //here this condition check for android version
-            //before m->march melo version , if you are running android version before march melon ,
+            //before m->marshmallow version , if you are running android version before march melon ,
             //then you don't require permission
-            //but if you are running later version after march melo
+            //but if you are running later version after marshmallow
             //then you need to check permssion before loading map.
             checkLocationPermission(); //This is method for getting permission
             //will go to there
         }
 
-        //this is used for loading map in desing
+        //this is used for loading map in design
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map_image); //map_img id for fragment map, laready there in desing
+                .findFragmentById(R.id.map_image); //map_img id for fragment map, already there in design
 
         //this is loading map
         mapFragment.getMapAsync(this); //this will generate onMapReady method , is below
@@ -73,9 +73,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;  //creating Map Instance
-        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL); //setting normal view , there is diferent view , but we have normal
-        mMap.getUiSettings().setMyLocationButtonEnabled(false); // set false
-        mMap.getUiSettings().setMapToolbarEnabled(false); //set false
+        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL); //setting normal view , there is different view , but we have normal
+        mMap.getUiSettings().setMyLocationButtonEnabled(true); // set false
+        mMap.getUiSettings().setMapToolbarEnabled(true); //set false
 
 
         //Initialize Google Play Services
@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             if (ContextCompat.checkSelfPermission(MainActivity.this,
                     Manifest.permission.ACCESS_FINE_LOCATION)
                     == PackageManager.PERMISSION_GRANTED) {
-                //this is for getting permission if version is greatern than march melo
+                //this is for getting permission if version is greater than marshmallow
                 buildGoogleApiClient();
                 mMap.setMyLocationEnabled(true);
             }
@@ -114,11 +114,11 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         if (mLastLocation != null) {
             Log.e("location", "lat " + mLastLocation.getLatitude() + " long " + mLastLocation.getLongitude());
             Toast.makeText(MainActivity.this,"lat " + mLastLocation.getLatitude() + " long " + mLastLocation.getLongitude(),Toast.LENGTH_LONG).show();
-            currentLatitute = mLastLocation.getLatitude();
-            currentLongtitute = mLastLocation.getLongitude();
+            currentLatitude = mLastLocation.getLatitude();
+            currentLongitude = mLastLocation.getLongitude();
 
-            if (currentLatitute != null && currentLongtitute != null) {
-                LatLng origin = new LatLng(currentLatitute, currentLongtitute);
+            if (currentLatitude != null && currentLongitude != null) {
+                LatLng origin = new LatLng(currentLatitude, currentLongitude);
                 float zoomLevel = 15.0f; //This goes up to 21
                 marker = new MarkerOptions()
                         .position(origin)
@@ -182,10 +182,10 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
     }
 
-    //Just copy paster.
+    //Just copy paste.
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-
+    Log.e("connection", "Connection Failed");
     }
 }
