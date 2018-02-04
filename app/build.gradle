@@ -4,7 +4,7 @@ android {
     compileSdkVersion 26
     defaultConfig {
         applicationId "com.example.maheshbhattarai.androidmap"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -14,6 +14,12 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    allprojects {
+        repositories {
+            maven { url "https://jitpack.io" }
         }
     }
 }
@@ -29,6 +35,9 @@ dependencies {
     //for google map service-1
     compile 'com.google.android.gms:play-services:11.0.4'
     compile 'com.google.android.gms:play-services-maps:11.0.4'
+
+    //this is the third party library for draw route on google map
+    compile 'com.github.ar-android:DrawRouteMaps:1.0.0'
 }
 //-2
 apply plugin: 'com.google.gms.google-services'

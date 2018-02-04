@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.maheshbhattarai.androidmap.MainActivity">
+    tools:context="com.example.maheshbhattarai.androidmap.DistanceFindActivety">
 
     <EditText
         android:id="@+id/first_address"
@@ -39,14 +39,6 @@
         android:id="@+id/showMiles"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp" />
-
-    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/map_image"
-        android:layout_marginTop="10dp"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
+        android:layout_marginTop="20dp" />
 
 </LinearLayout>
