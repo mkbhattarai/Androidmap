@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
 
-    //This is for finding current locatin method
+    //This is for finding current location method
     @Override
     public void onLocationChanged(Location location) {
 
