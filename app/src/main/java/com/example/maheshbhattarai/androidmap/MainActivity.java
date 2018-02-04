@@ -74,8 +74,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;  //creating Map Instance
         mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL); //setting normal view , there is different view , but we have normal
-        mMap.getUiSettings().setMyLocationButtonEnabled(true); // set false
-        mMap.getUiSettings().setMapToolbarEnabled(true); //set false
+        mMap.getUiSettings().setMyLocationButtonEnabled(false); // set false
+        mMap.getUiSettings().setMapToolbarEnabled(false); //set false
 
 
         //Initialize Google Play Services
